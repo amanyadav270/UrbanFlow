@@ -1,0 +1,12 @@
+{"episode": 1, "seed": 219, "scenario": "incident", "validation_reward": -0.18467579782009125, "wall_seconds": 14.719}
+{"episode": 2, "seed": 343, "scenario": "normal", "validation_reward": -0.18467579782009125, "wall_seconds": 25.297}
+{"episode": 3, "seed": 257, "scenario": "city_shift", "validation_reward": -0.18467579782009125, "wall_seconds": 40.203}
+{"episode": 4, "seed": 838, "scenario": "city_shift", "validation_reward": -0.18467579782009125, "wall_seconds": 54.203}
+{"episode": 5, "seed": 670, "scenario": "city_shift", "validation_reward": -0.18467579782009125, "wall_seconds": 68.422}
+{"episode": 6, "seed": 205, "scenario": "normal", "validation_reward": -0.18467579782009125, "wall_seconds": 79.141}
+{"episode": 7, "seed": 970, "scenario": "incident", "validation_reward": -0.18467579782009125, "wall_seconds": 93.438}
+{"episode": 8, "seed": 290, "scenario": "city_shift", "validation_reward": -0.18467579782009125, "wall_seconds": 108.891}
+{"episode": 9, "seed": 456, "scenario": "normal", "validation_reward": -0.18467579782009125, "wall_seconds": 120.969}
+{"episode": 10, "seed": 443, "scenario": "city_shift", "validation_reward": -0.18467579782009125, "wall_seconds": 135.719}
+{"episode": 11, "seed": 238, "scenario": "incident", "validation_reward": -0.18467579782009125, "wall_seconds": 151.032}
+{"episode": 12, "seed": 783, "scenario": "normal", "validation_reward": -0.18467579782009125, "wall_seconds": 162.594}

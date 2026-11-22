@@ -1,0 +1,1388 @@
+{
+  "metadata": {
+    "timestamp": "2026-11-14 00:49:16",
+    "input_features": [
+      "avg_speed_lag_1",
+      "avg_speed_lag_2",
+      "avg_speed_lag_3",
+      "avg_speed_roll_mean",
+      "avg_speed_roll_std",
+      "density_lag_1",
+      "density_lag_2",
+      "density_lag_3",
+      "density_roll_mean",
+      "queue_lag_1",
+      "queue_lag_2",
+      "queue_lag_3",
+      "queue_roll_mean",
+      "operational_capacity",
+      "vc_ratio",
+      "incident_active",
+      "down_1hop_max_queue_ratio",
+      "down_1hop_min_speed_kmh",
+      "down_1hop_max_occupancy",
+      "down_1hop_mean_vc_ratio",
+      "down_2hop_max_queue_ratio",
+      "down_2hop_min_speed_kmh",
+      "down_2hop_max_occupancy",
+      "down_3hop_max_queue_ratio",
+      "down_3hop_min_speed_kmh",
+      "downstream_speed_gradient",
+      "downstream_queue_delta_15s",
+      "is_perimeter_exit"
+    ],
+    "feature_count": 28,
+    "local_feature_count": 16,
+    "network_feature_count": 12,
+    "label_col": "target_spillback_onset"
+  },
+  "horizons": {
+    "5min": {
+      "validation_selection": {
+        "val_brier_score": 0.0037,
+        "val_pr_auc": 0.0499,
+        "val_roc_auc": 0.9274,
+        "selected_threshold": 0.1,
+        "val_best_f1": 0.0087,
+        "val_precision_at_threshold": 0.0565,
+        "val_recall_at_threshold": 0.0047
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "5min",
+        "horizon_sec": 300,
+        "threshold_used": 0.1,
+        "sample_level_metrics": {
+          "total_samples": 908880,
+          "positive_prevalence_pct": 0.414,
+          "confusion_matrix": [
+            [
+              904841,
+              274
+            ],
+            [
+              3742,
+              23
+            ]
+          ],
+          "accuracy": 0.9956,
+          "precision": 0.0774,
+          "recall": 0.0061,
+          "f1_score": 0.0113,
+          "pr_auc": 0.0602,
+          "roc_auc": 0.9315,
+          "brier_score": 0.0041
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 94,
+          "total_alarms": 20,
+          "matched_alarms_tp": 5,
+          "unmatched_alarms_fp": 15,
+          "missed_events_fn": 89,
+          "operational_precision": 0.25,
+          "operational_recall": 0.0532,
+          "exposure_hours": 1219.0,
+          "false_alarm_rate_per_hour": 0.0123,
+          "lead_time_distribution": {
+            "count": 5,
+            "mean": 119.0,
+            "median": 115.0,
+            "std": 103.28,
+            "min": 30.0,
+            "max": 290.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM01_S1009": {
+            "events": 11,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0131,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM01_S1010": {
+            "events": 11,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0131,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2009": {
+            "events": 13,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 12,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2010": {
+            "events": 13,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 0,
+            "missed_fn": 12,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3009": {
+            "events": 11,
+            "alarms": 4,
+            "matched_tp": 0,
+            "unmatched_fp": 3,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0196,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3010": {
+            "events": 10,
+            "alarms": 5,
+            "matched_tp": 0,
+            "unmatched_fp": 4,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0262,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4009": {
+            "events": 14,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 14,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0132,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4010": {
+            "events": 11,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "5min",
+        "horizon_sec": 300,
+        "threshold_used": 0.1,
+        "sample_level_metrics": {
+          "total_samples": 2272200,
+          "positive_prevalence_pct": 0.382,
+          "confusion_matrix": [
+            [
+              2262854,
+              662
+            ],
+            [
+              8636,
+              48
+            ]
+          ],
+          "accuracy": 0.9959,
+          "precision": 0.0676,
+          "recall": 0.0055,
+          "f1_score": 0.0102,
+          "pr_auc": 0.0486,
+          "roc_auc": 0.9232,
+          "brier_score": 0.0038
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 226,
+          "total_alarms": 37,
+          "matched_alarms_tp": 12,
+          "unmatched_alarms_fp": 25,
+          "missed_events_fn": 214,
+          "operational_precision": 0.3243,
+          "operational_recall": 0.0531,
+          "exposure_hours": 3046.01,
+          "false_alarm_rate_per_hour": 0.0082,
+          "lead_time_distribution": {
+            "count": 12,
+            "mean": 115.42,
+            "median": 100.0,
+            "std": 65.28,
+            "min": 30.0,
+            "max": 230.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM05_S5001": {
+            "events": 9,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5002": {
+            "events": 5,
+            "alarms": 3,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.013,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5003": {
+            "events": 12,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 12,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5004": {
+            "events": 11,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5005": {
+            "events": 13,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 13,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0132,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5006": {
+            "events": 10,
+            "alarms": 3,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.013,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5007": {
+            "events": 13,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 12,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5008": {
+            "events": 15,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 15,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5009": {
+            "events": 10,
+            "alarms": 3,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0065,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5010": {
+            "events": 17,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 13,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0133,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6001": {
+            "events": 9,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0065,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6002": {
+            "events": 11,
+            "alarms": 4,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0131,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6003": {
+            "events": 11,
+            "alarms": 0,
+            "matched_tp": 0,
+            "unmatched_fp": 0,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6004": {
+            "events": 11,
+            "alarms": 1,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6005": {
+            "events": 10,
+            "alarms": 0,
+            "matched_tp": 0,
+            "unmatched_fp": 0,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6006": {
+            "events": 15,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 15,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0067,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6007": {
+            "events": 11,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6008": {
+            "events": 10,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 1,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0065,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6009": {
+            "events": 14,
+            "alarms": 3,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 13,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0132,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6010": {
+            "events": 9,
+            "alarms": 2,
+            "matched_tp": 0,
+            "unmatched_fp": 2,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.013,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "comparison_against_local": {
+        "in_distribution_test": {
+          "local_operational_precision": 0.2658,
+          "network_operational_precision": 0.25,
+          "delta_precision": -0.0158,
+          "local_operational_recall": 0.2234,
+          "network_operational_recall": 0.0532,
+          "delta_recall": -0.1702,
+          "local_far_per_hour": 0.0476,
+          "network_far_per_hour": 0.0123,
+          "delta_far": -0.0353,
+          "local_pr_auc": 0.0608,
+          "network_pr_auc": 0.0602,
+          "local_roc_auc": 0.9328,
+          "network_roc_auc": 0.9315
+        },
+        "held_out_test": {
+          "local_operational_precision": 0.2377,
+          "network_operational_precision": 0.3243,
+          "delta_precision": 0.0866,
+          "local_operational_recall": 0.2345,
+          "network_operational_recall": 0.0531,
+          "delta_recall": -0.1814,
+          "local_far_per_hour": 0.0558,
+          "network_far_per_hour": 0.0082,
+          "delta_far": -0.0476,
+          "local_pr_auc": 0.0511,
+          "network_pr_auc": 0.0486,
+          "local_roc_auc": 0.9291,
+          "network_roc_auc": 0.9232
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_network_classifiers\\lgb_network_spillback_classifier_5min.joblib",
+      "model_sha256": "5B301A531D1D8A9223CBEE3C076ED1F56DBF0D181580B10E3D5EB25E732028E9"
+    },
+    "10min": {
+      "validation_selection": {
+        "val_brier_score": 0.0058,
+        "val_pr_auc": 0.1104,
+        "val_roc_auc": 0.9553,
+        "selected_threshold": 0.18,
+        "val_best_f1": 0.0929,
+        "val_precision_at_threshold": 0.2,
+        "val_recall_at_threshold": 0.0605
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "10min",
+        "horizon_sec": 600,
+        "threshold_used": 0.18,
+        "sample_level_metrics": {
+          "total_samples": 808080,
+          "positive_prevalence_pct": 0.776,
+          "confusion_matrix": [
+            [
+              800662,
+              1146
+            ],
+            [
+              5861,
+              411
+            ]
+          ],
+          "accuracy": 0.9913,
+          "precision": 0.264,
+          "recall": 0.0655,
+          "f1_score": 0.105,
+          "pr_auc": 0.1407,
+          "roc_auc": 0.951,
+          "brier_score": 0.0071
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 90,
+          "total_alarms": 93,
+          "matched_alarms_tp": 28,
+          "unmatched_alarms_fp": 65,
+          "missed_events_fn": 62,
+          "operational_precision": 0.3011,
+          "operational_recall": 0.3111,
+          "exposure_hours": 1084.7,
+          "false_alarm_rate_per_hour": 0.0599,
+          "lead_time_distribution": {
+            "count": 28,
+            "mean": 322.86,
+            "median": 330.0,
+            "std": 207.0,
+            "min": 5.0,
+            "max": 595.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM01_S1009": {
+            "events": 10,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 8,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0589,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM01_S1010": {
+            "events": 9,
+            "alarms": 8,
+            "matched_tp": 0,
+            "unmatched_fp": 6,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.044,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2009": {
+            "events": 13,
+            "alarms": 11,
+            "matched_tp": 0,
+            "unmatched_fp": 8,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.059,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2010": {
+            "events": 13,
+            "alarms": 10,
+            "matched_tp": 0,
+            "unmatched_fp": 7,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0519,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3009": {
+            "events": 11,
+            "alarms": 14,
+            "matched_tp": 0,
+            "unmatched_fp": 12,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0882,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3010": {
+            "events": 10,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 11,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.081,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4009": {
+            "events": 13,
+            "alarms": 13,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.074,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4010": {
+            "events": 11,
+            "alarms": 7,
+            "matched_tp": 0,
+            "unmatched_fp": 3,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0222,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "10min",
+        "horizon_sec": 600,
+        "threshold_used": 0.18,
+        "sample_level_metrics": {
+          "total_samples": 2020200,
+          "positive_prevalence_pct": 0.69,
+          "confusion_matrix": [
+            [
+              2003187,
+              3081
+            ],
+            [
+              13262,
+              670
+            ]
+          ],
+          "accuracy": 0.9919,
+          "precision": 0.1786,
+          "recall": 0.0481,
+          "f1_score": 0.0758,
+          "pr_auc": 0.103,
+          "roc_auc": 0.9447,
+          "brier_score": 0.0064
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 222,
+          "total_alarms": 231,
+          "matched_alarms_tp": 52,
+          "unmatched_alarms_fp": 179,
+          "missed_events_fn": 170,
+          "operational_precision": 0.2251,
+          "operational_recall": 0.2342,
+          "exposure_hours": 2709.93,
+          "false_alarm_rate_per_hour": 0.0661,
+          "lead_time_distribution": {
+            "count": 52,
+            "mean": 304.81,
+            "median": 257.5,
+            "std": 213.82,
+            "min": 10.0,
+            "max": 600.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM05_S5001": {
+            "events": 9,
+            "alarms": 12,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0737,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5002": {
+            "events": 5,
+            "alarms": 19,
+            "matched_tp": 0,
+            "unmatched_fp": 11,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0802,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5003": {
+            "events": 12,
+            "alarms": 9,
+            "matched_tp": 0,
+            "unmatched_fp": 6,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0447,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5004": {
+            "events": 10,
+            "alarms": 9,
+            "matched_tp": 0,
+            "unmatched_fp": 7,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0517,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5005": {
+            "events": 13,
+            "alarms": 14,
+            "matched_tp": 0,
+            "unmatched_fp": 11,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0813,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5006": {
+            "events": 9,
+            "alarms": 11,
+            "matched_tp": 0,
+            "unmatched_fp": 9,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.066,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5007": {
+            "events": 13,
+            "alarms": 6,
+            "matched_tp": 0,
+            "unmatched_fp": 4,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0297,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5008": {
+            "events": 15,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.074,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5009": {
+            "events": 10,
+            "alarms": 10,
+            "matched_tp": 0,
+            "unmatched_fp": 9,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0662,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5010": {
+            "events": 16,
+            "alarms": 13,
+            "matched_tp": 0,
+            "unmatched_fp": 12,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0895,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6001": {
+            "events": 9,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 13,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0953,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6002": {
+            "events": 11,
+            "alarms": 11,
+            "matched_tp": 0,
+            "unmatched_fp": 7,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0516,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6003": {
+            "events": 11,
+            "alarms": 10,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0737,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6004": {
+            "events": 11,
+            "alarms": 10,
+            "matched_tp": 0,
+            "unmatched_fp": 7,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0517,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6005": {
+            "events": 10,
+            "alarms": 14,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0732,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6006": {
+            "events": 15,
+            "alarms": 9,
+            "matched_tp": 0,
+            "unmatched_fp": 6,
+            "missed_fn": 11,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0449,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6007": {
+            "events": 11,
+            "alarms": 11,
+            "matched_tp": 0,
+            "unmatched_fp": 11,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.081,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6008": {
+            "events": 10,
+            "alarms": 11,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0736,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6009": {
+            "events": 14,
+            "alarms": 8,
+            "matched_tp": 0,
+            "unmatched_fp": 6,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0447,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6010": {
+            "events": 8,
+            "alarms": 14,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0733,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "comparison_against_local": {
+        "in_distribution_test": {
+          "local_operational_precision": 0.2059,
+          "network_operational_precision": 0.3011,
+          "delta_precision": 0.0952,
+          "local_operational_recall": 0.2333,
+          "network_operational_recall": 0.3111,
+          "delta_recall": 0.0778,
+          "local_far_per_hour": 0.0747,
+          "network_far_per_hour": 0.0599,
+          "delta_far": -0.0148,
+          "local_pr_auc": 0.1346,
+          "network_pr_auc": 0.1407,
+          "local_roc_auc": 0.9375,
+          "network_roc_auc": 0.951
+        },
+        "held_out_test": {
+          "local_operational_precision": 0.1885,
+          "network_operational_precision": 0.2251,
+          "delta_precision": 0.0366,
+          "local_operational_recall": 0.2072,
+          "network_operational_recall": 0.2342,
+          "delta_recall": 0.027,
+          "local_far_per_hour": 0.0731,
+          "network_far_per_hour": 0.0661,
+          "delta_far": -0.007,
+          "local_pr_auc": 0.1052,
+          "network_pr_auc": 0.103,
+          "local_roc_auc": 0.9376,
+          "network_roc_auc": 0.9447
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_network_classifiers\\lgb_network_spillback_classifier_10min.joblib",
+      "model_sha256": "9B93E5DB672F692E509DC3012658413BC713FC6348CCD5D044B33470FF568C54"
+    },
+    "15min": {
+      "validation_selection": {
+        "val_brier_score": 0.0076,
+        "val_pr_auc": 0.1651,
+        "val_roc_auc": 0.9586,
+        "selected_threshold": 0.15,
+        "val_best_f1": 0.2081,
+        "val_precision_at_threshold": 0.211,
+        "val_recall_at_threshold": 0.2052
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "15min",
+        "horizon_sec": 900,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 707280,
+          "positive_prevalence_pct": 1.102,
+          "confusion_matrix": [
+            [
+              694959,
+              4524
+            ],
+            [
+              6100,
+              1697
+            ]
+          ],
+          "accuracy": 0.985,
+          "precision": 0.2728,
+          "recall": 0.2176,
+          "f1_score": 0.2421,
+          "pr_auc": 0.1957,
+          "roc_auc": 0.9514,
+          "brier_score": 0.0097
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 82,
+          "total_alarms": 197,
+          "matched_alarms_tp": 34,
+          "unmatched_alarms_fp": 163,
+          "missed_events_fn": 48,
+          "operational_precision": 0.1726,
+          "operational_recall": 0.4146,
+          "exposure_hours": 949.96,
+          "false_alarm_rate_per_hour": 0.1716,
+          "lead_time_distribution": {
+            "count": 34,
+            "mean": 426.47,
+            "median": 487.5,
+            "std": 321.03,
+            "min": 5.0,
+            "max": 900.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM01_S1009": {
+            "events": 8,
+            "alarms": 28,
+            "matched_tp": 0,
+            "unmatched_fp": 23,
+            "missed_fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1936,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM01_S1010": {
+            "events": 9,
+            "alarms": 21,
+            "matched_tp": 0,
+            "unmatched_fp": 15,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1256,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2009": {
+            "events": 11,
+            "alarms": 22,
+            "matched_tp": 0,
+            "unmatched_fp": 17,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1433,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM02_S2010": {
+            "events": 12,
+            "alarms": 25,
+            "matched_tp": 0,
+            "unmatched_fp": 22,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1862,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3009": {
+            "events": 9,
+            "alarms": 28,
+            "matched_tp": 0,
+            "unmatched_fp": 26,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2182,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM03_S3010": {
+            "events": 10,
+            "alarms": 32,
+            "matched_tp": 0,
+            "unmatched_fp": 26,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2184,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4009": {
+            "events": 12,
+            "alarms": 26,
+            "matched_tp": 0,
+            "unmatched_fp": 22,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1857,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM04_S4010": {
+            "events": 11,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 12,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1016,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "15min",
+        "horizon_sec": 900,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 1768200,
+          "positive_prevalence_pct": 0.986,
+          "confusion_matrix": [
+            [
+              1739001,
+              11761
+            ],
+            [
+              14440,
+              2998
+            ]
+          ],
+          "accuracy": 0.9852,
+          "precision": 0.2031,
+          "recall": 0.1719,
+          "f1_score": 0.1862,
+          "pr_auc": 0.1531,
+          "roc_auc": 0.9483,
+          "brier_score": 0.0089
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 212,
+          "total_alarms": 521,
+          "matched_alarms_tp": 87,
+          "unmatched_alarms_fp": 434,
+          "missed_events_fn": 125,
+          "operational_precision": 0.167,
+          "operational_recall": 0.4104,
+          "exposure_hours": 2374.03,
+          "false_alarm_rate_per_hour": 0.1828,
+          "lead_time_distribution": {
+            "count": 87,
+            "mean": 442.3,
+            "median": 335.0,
+            "std": 329.14,
+            "min": 5.0,
+            "max": 900.0
+          }
+        },
+        "per_run_stats": {
+          "RUN_FAM05_S5001": {
+            "events": 8,
+            "alarms": 23,
+            "matched_tp": 0,
+            "unmatched_fp": 18,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1515,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5002": {
+            "events": 5,
+            "alarms": 41,
+            "matched_tp": 0,
+            "unmatched_fp": 35,
+            "missed_fn": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2915,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5003": {
+            "events": 11,
+            "alarms": 13,
+            "matched_tp": 0,
+            "unmatched_fp": 9,
+            "missed_fn": 7,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0766,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5004": {
+            "events": 10,
+            "alarms": 25,
+            "matched_tp": 0,
+            "unmatched_fp": 20,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1687,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5005": {
+            "events": 12,
+            "alarms": 31,
+            "matched_tp": 0,
+            "unmatched_fp": 28,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2361,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5006": {
+            "events": 8,
+            "alarms": 30,
+            "matched_tp": 0,
+            "unmatched_fp": 23,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1926,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5007": {
+            "events": 13,
+            "alarms": 17,
+            "matched_tp": 0,
+            "unmatched_fp": 14,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1186,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5008": {
+            "events": 14,
+            "alarms": 28,
+            "matched_tp": 0,
+            "unmatched_fp": 25,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2111,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5009": {
+            "events": 10,
+            "alarms": 27,
+            "matched_tp": 0,
+            "unmatched_fp": 20,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1681,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM05_S5010": {
+            "events": 15,
+            "alarms": 18,
+            "matched_tp": 0,
+            "unmatched_fp": 14,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1192,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6001": {
+            "events": 9,
+            "alarms": 34,
+            "matched_tp": 0,
+            "unmatched_fp": 30,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.251,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6002": {
+            "events": 10,
+            "alarms": 26,
+            "matched_tp": 0,
+            "unmatched_fp": 24,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2017,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6003": {
+            "events": 11,
+            "alarms": 21,
+            "matched_tp": 0,
+            "unmatched_fp": 18,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1514,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6004": {
+            "events": 11,
+            "alarms": 34,
+            "matched_tp": 0,
+            "unmatched_fp": 27,
+            "missed_fn": 6,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2275,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6005": {
+            "events": 9,
+            "alarms": 33,
+            "matched_tp": 0,
+            "unmatched_fp": 28,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2339,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6006": {
+            "events": 14,
+            "alarms": 13,
+            "matched_tp": 0,
+            "unmatched_fp": 10,
+            "missed_fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.0854,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6007": {
+            "events": 11,
+            "alarms": 32,
+            "matched_tp": 0,
+            "unmatched_fp": 25,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.21,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6008": {
+            "events": 10,
+            "alarms": 22,
+            "matched_tp": 0,
+            "unmatched_fp": 21,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1763,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6009": {
+            "events": 14,
+            "alarms": 15,
+            "matched_tp": 0,
+            "unmatched_fp": 12,
+            "missed_fn": 10,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.1021,
+            "mean_lead_time": 0.0
+          },
+          "RUN_FAM06_S6010": {
+            "events": 7,
+            "alarms": 38,
+            "matched_tp": 0,
+            "unmatched_fp": 33,
+            "missed_fn": 5,
+            "precision": 0.0,
+            "recall": 0.0,
+            "far_per_hour": 0.2762,
+            "mean_lead_time": 0.0
+          }
+        }
+      },
+      "comparison_against_local": {
+        "in_distribution_test": {
+          "local_operational_precision": 0.1517,
+          "network_operational_precision": 0.1726,
+          "delta_precision": 0.0209,
+          "local_operational_recall": 0.3293,
+          "network_operational_recall": 0.4146,
+          "delta_recall": 0.0853,
+          "local_far_per_hour": 0.159,
+          "network_far_per_hour": 0.1716,
+          "delta_far": 0.0126,
+          "local_pr_auc": 0.173,
+          "network_pr_auc": 0.1957,
+          "local_roc_auc": 0.9368,
+          "network_roc_auc": 0.9514
+        },
+        "held_out_test": {
+          "local_operational_precision": 0.1472,
+          "network_operational_precision": 0.167,
+          "delta_precision": 0.0198,
+          "local_operational_recall": 0.3396,
+          "network_operational_recall": 0.4104,
+          "delta_recall": 0.0708,
+          "local_far_per_hour": 0.1757,
+          "network_far_per_hour": 0.1828,
+          "delta_far": 0.0071,
+          "local_pr_auc": 0.1494,
+          "network_pr_auc": 0.1531,
+          "local_roc_auc": 0.9415,
+          "network_roc_auc": 0.9483
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_network_classifiers\\lgb_network_spillback_classifier_15min.joblib",
+      "model_sha256": "429E172E160CDC486A4667B2ED6513CCA7E017C9F1BB4B403204DCEF18B5B198"
+    }
+  }
+}

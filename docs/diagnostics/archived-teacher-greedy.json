@@ -1,0 +1,280 @@
+{
+  "selection": "argmax",
+  "checkpoint": "data\\network_ppo_teacher_candidates\\classroom_grid\\neighbor",
+  "probe": [
+    [
+      [
+        -0.1449277549982071,
+        0.01661909557878971
+      ],
+      [
+        -0.18698802590370178,
+        0.05329171568155289
+      ],
+      [
+        -0.15864725410938263,
+        0.033685747534036636
+      ],
+      [
+        -0.17222513258457184,
+        0.035664744675159454
+      ]
+    ],
+    [
+      [
+        0.45970091223716736,
+        0.540299117565155
+      ],
+      [
+        0.44021740555763245,
+        0.5597825646400452
+      ],
+      [
+        0.4520644247531891,
+        0.5479355454444885
+      ],
+      [
+        0.4482139050960541,
+        0.5517860651016235
+      ]
+    ]
+  ],
+  "scenarios": {
+    "balanced": [
+      {
+        "seed": 2501,
+        "hold": 112,
+        "switch": 32,
+        "completed": 54,
+        "entered": 134,
+        "mean_queue": 0.3561,
+        "switch_probability_range": [
+          0.386,
+          0.5326
+        ],
+        "directional_decisions": {
+          "opposing": 78,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 112,
+        "switch": 32,
+        "completed": 46,
+        "entered": 126,
+        "mean_queue": 0.3853,
+        "switch_probability_range": [
+          0.3857,
+          0.5336
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 112,
+        "switch": 32,
+        "completed": 42,
+        "entered": 122,
+        "mean_queue": 0.329,
+        "switch_probability_range": [
+          0.3879,
+          0.5327
+        ],
+        "directional_decisions": {
+          "opposing": 78,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ],
+    "east_west": [
+      {
+        "seed": 2501,
+        "hold": 112,
+        "switch": 32,
+        "completed": 69,
+        "entered": 149,
+        "mean_queue": 0.2707,
+        "switch_probability_range": [
+          0.3894,
+          0.5363
+        ],
+        "directional_decisions": {
+          "opposing": 40,
+          "opposing_switches": 0,
+          "current": 21,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 112,
+        "switch": 32,
+        "completed": 69,
+        "entered": 149,
+        "mean_queue": 0.2849,
+        "switch_probability_range": [
+          0.3811,
+          0.5346
+        ],
+        "directional_decisions": {
+          "opposing": 60,
+          "opposing_switches": 0,
+          "current": 15,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 112,
+        "switch": 32,
+        "completed": 55,
+        "entered": 135,
+        "mean_queue": 0.2758,
+        "switch_probability_range": [
+          0.3865,
+          0.5331
+        ],
+        "directional_decisions": {
+          "opposing": 62,
+          "opposing_switches": 0,
+          "current": 7,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ],
+    "north_south": [
+      {
+        "seed": 2501,
+        "hold": 112,
+        "switch": 32,
+        "completed": 19,
+        "entered": 99,
+        "mean_queue": 0.4996,
+        "switch_probability_range": [
+          0.3876,
+          0.528
+        ],
+        "directional_decisions": {
+          "opposing": 79,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 112,
+        "switch": 32,
+        "completed": 20,
+        "entered": 100,
+        "mean_queue": 0.5401,
+        "switch_probability_range": [
+          0.3863,
+          0.528
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 112,
+        "switch": 32,
+        "completed": 19,
+        "entered": 99,
+        "mean_queue": 0.4768,
+        "switch_probability_range": [
+          0.3863,
+          0.5313
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ],
+    "reversal": [
+      {
+        "seed": 2501,
+        "hold": 112,
+        "switch": 32,
+        "completed": 69,
+        "entered": 149,
+        "mean_queue": 0.2576,
+        "switch_probability_range": [
+          0.3904,
+          0.5363
+        ],
+        "directional_decisions": {
+          "opposing": 40,
+          "opposing_switches": 0,
+          "current": 21,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 112,
+        "switch": 32,
+        "completed": 68,
+        "entered": 148,
+        "mean_queue": 0.2809,
+        "switch_probability_range": [
+          0.3843,
+          0.5346
+        ],
+        "directional_decisions": {
+          "opposing": 61,
+          "opposing_switches": 0,
+          "current": 15,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 112,
+        "switch": 32,
+        "completed": 56,
+        "entered": 136,
+        "mean_queue": 0.2745,
+        "switch_probability_range": [
+          0.3865,
+          0.5331
+        ],
+        "directional_decisions": {
+          "opposing": 62,
+          "opposing_switches": 0,
+          "current": 7,
+          "current_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ]
+  }
+}

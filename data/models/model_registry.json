@@ -1,0 +1,43 @@
+{
+  "horizons": [
+    "5min",
+    "10min",
+    "15min"
+  ],
+  "targets": [
+    "avg_speed",
+    "density",
+    "queue_length"
+  ],
+  "best_models": {
+    "5min": {
+      "avg_speed": "LightGBM",
+      "density": "Persistence",
+      "queue_length": "Persistence",
+      "congestion_event": "LightGBM"
+    },
+    "10min": {
+      "avg_speed": "LightGBM",
+      "density": "Persistence",
+      "queue_length": "LightGBM",
+      "congestion_event": "LightGBM"
+    },
+    "15min": {
+      "avg_speed": "MovingAverage",
+      "density": "MovingAverage",
+      "queue_length": "MovingAverage",
+      "congestion_event": "LightGBM"
+    }
+  },
+  "saved_models": [
+    "5min_avg_speed",
+    "5min_density",
+    "5min_queue_length",
+    "10min_avg_speed",
+    "10min_density",
+    "10min_queue_length",
+    "15min_avg_speed",
+    "15min_density",
+    "15min_queue_length"
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "selection": "argmax",
+  "checkpoint": "data\\classroom_ppo_responsive_v1\\neighbor",
+  "probe": [
+    [
+      [
+        -0.25064510107040405,
+        0.359729140996933
+      ],
+      [
+        -0.29694586992263794,
+        0.36195799708366394
+      ],
+      [
+        -0.21021202206611633,
+        0.29979443550109863
+      ],
+      [
+        -0.3399594724178314,
+        0.42246976494789124
+      ]
+    ],
+    [
+      [
+        0.35197383165359497,
+        0.648026168346405
+      ],
+      [
+        0.34098589420318604,
+        0.659014105796814
+      ],
+      [
+        0.37519198656082153,
+        0.6248079538345337
+      ],
+      [
+        0.318119078874588,
+        0.6818808913230896
+      ]
+    ]
+  ],
+  "scenarios": {
+    "balanced": [
+      {
+        "seed": 2501,
+        "hold": 103,
+        "switch": 41,
+        "completed": 54,
+        "entered": 134,
+        "mean_queue": 0.3561,
+        "switch_probability_range": [
+          0.1602,
+          0.792
+        ],
+        "directional_decisions": {
+          "opposing": 78,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 104,
+        "switch": 40,
+        "completed": 46,
+        "entered": 126,
+        "mean_queue": 0.3853,
+        "switch_probability_range": [
+          0.1588,
+          0.7968
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 104,
+        "switch": 40,
+        "completed": 42,
+        "entered": 122,
+        "mean_queue": 0.329,
+        "switch_probability_range": [
+          0.1556,
+          0.7984
+        ],
+        "directional_decisions": {
+          "opposing": 78,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ],
+    "east_west": [
+      {
+        "seed": 2501,
+        "hold": 114,
+        "switch": 30,
+        "completed": 70,
+        "entered": 150,
+        "mean_queue": 0.2736,
+        "switch_probability_range": [
+          0.151,
+          0.7857
+        ],
+        "directional_decisions": {
+          "opposing": 44,
+          "opposing_switches": 4,
+          "current": 23,
+          "current_switches": 0
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      },
+      {
+        "seed": 2502,
+        "hold": 114,
+        "switch": 30,
+        "completed": 72,
+        "entered": 152,
+        "mean_queue": 0.2886,
+        "switch_probability_range": [
+          0.1447,
+          0.7806
+        ],
+        "directional_decisions": {
+          "opposing": 68,
+          "opposing_switches": 4,
+          "current": 14,
+          "current_switches": 0
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      },
+      {
+        "seed": 2503,
+        "hold": 113,
+        "switch": 31,
+        "completed": 57,
+        "entered": 137,
+        "mean_queue": 0.2708,
+        "switch_probability_range": [
+          0.1514,
+          0.7875
+        ],
+        "directional_decisions": {
+          "opposing": 63,
+          "opposing_switches": 0,
+          "current": 9,
+          "current_switches": 2
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      }
+    ],
+    "north_south": [
+      {
+        "seed": 2501,
+        "hold": 100,
+        "switch": 44,
+        "completed": 19,
+        "entered": 99,
+        "mean_queue": 0.4996,
+        "switch_probability_range": [
+          0.168,
+          0.8017
+        ],
+        "directional_decisions": {
+          "opposing": 79,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2502,
+        "hold": 100,
+        "switch": 44,
+        "completed": 20,
+        "entered": 100,
+        "mean_queue": 0.5401,
+        "switch_probability_range": [
+          0.1682,
+          0.798
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      },
+      {
+        "seed": 2503,
+        "hold": 100,
+        "switch": 44,
+        "completed": 19,
+        "entered": 99,
+        "mean_queue": 0.4768,
+        "switch_probability_range": [
+          0.1661,
+          0.7981
+        ],
+        "directional_decisions": {
+          "opposing": 80,
+          "opposing_switches": 0
+        },
+        "yellow_transitions": 20,
+        "green_transitions": 20
+      }
+    ],
+    "reversal": [
+      {
+        "seed": 2501,
+        "hold": 113,
+        "switch": 31,
+        "completed": 69,
+        "entered": 149,
+        "mean_queue": 0.2614,
+        "switch_probability_range": [
+          0.151,
+          0.7941
+        ],
+        "directional_decisions": {
+          "opposing": 46,
+          "opposing_switches": 3,
+          "current": 23,
+          "current_switches": 0
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      },
+      {
+        "seed": 2502,
+        "hold": 114,
+        "switch": 30,
+        "completed": 70,
+        "entered": 150,
+        "mean_queue": 0.2844,
+        "switch_probability_range": [
+          0.1453,
+          0.794
+        ],
+        "directional_decisions": {
+          "opposing": 66,
+          "opposing_switches": 3,
+          "current": 16,
+          "current_switches": 1
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      },
+      {
+        "seed": 2503,
+        "hold": 113,
+        "switch": 31,
+        "completed": 60,
+        "entered": 140,
+        "mean_queue": 0.2708,
+        "switch_probability_range": [
+          0.1514,
+          0.7925
+        ],
+        "directional_decisions": {
+          "opposing": 63,
+          "opposing_switches": 0,
+          "current": 7,
+          "current_switches": 1
+        },
+        "yellow_transitions": 19,
+        "green_transitions": 19
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+vehicle_id,departure_time,entry_road,entry_lane,destination,vehicle_type,desired_speed
+example-1,0,road_w_in_nw,0,road_ne_out_e,sedan,12
+example-2,2,road_n_in_nw,1,road_nw_out_w,van,10
+example-3,3,road_e_in_ne,0,road_se_out_s,bus,9

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanFlow AI — 3D Traffic Operations Command Center</title>
+  <link rel="stylesheet" href="/static/css/style.css?v=routing-demo-1">
+  <link rel="stylesheet" href="/static/css/dispatch.css?v=urbanflow-clean">
+  <!-- Bundled Three.js and OrbitControls -->
+  <script src="/static/vendor/three.min.js"></script>
+  <script src="/static/vendor/OrbitControls.js"></script>
+</head>
+<body class="city-dashboard">
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m6 4 14 8-14 8z"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h8a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h8"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M12 6h.01M12 12h.01M12 18h.01" stroke-width="3"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h16M7 15l5-6 4 3 5-7"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 4.6 3 18a2 2 0 0 0 1.7 3h14.6a2 2 0 0 0 1.7-3L13.7 4.6a2 2 0 0 0-3.4 0ZM12 9v5m0 3h.01"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="m5 10 2-5h10l2 5m2 6v3m-18-3v3m0-9h18v6H3zM6 13h.01m12 0h.01"/></symbol>
+    <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 18a9 9 0 1 1 16 0M12 14l4-4M8 20h8"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 5 5"/></symbol>
+    <symbol id="i-focus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></symbol>
+  </svg>
+  <header class="dispatch-header">
+    <a href="#dashboard" class="dispatch-brand"><span class="dispatch-mark"><svg><use href="#i-route"/></svg></span><span><strong>UrbanFlow AI</strong><small>TRAFFIC SIMULATION</small></span></a>
+    <label class="network-picker"><span>Network</span><select id="map-select" class="hud-select" data-live>
+            <option value="metro">Metro center (36 signals)</option>
+            <option value="harbor">Harbor city (48 signals)</option>
+            <option value="midtown">Midtown avenues</option>
+            <option value="classroom_grid" selected>Classroom grid</option>
+            <option value="bronx_fordham">Bronx, NY</option>
+            <option value="procedural">Single corridor</option>
+          </select></label>
+    <div class="dispatch-header-right"><span id="network-size"></span><span id="status-badge" class="status-badge" role="status"><span class="pulse-dot"></span><span id="status-text">Connecting</span></span></div>
+  </header>
+  <div class="dispatch-layout" id="dashboard">
+    <nav class="dispatch-nav" aria-label="Workspace">
+      <a href="#dashboard" class="nav-current"><svg><use href="#i-grid"/></svg>Dashboard</a>
+      <button type="button" data-open="settings-panel"><svg><use href="#i-play"/></svg>Simulation</button>
+      <a href="#route-panel"><svg><use href="#i-route"/></svg>Route planner</a>
+      <button type="button" data-open="signals-dialog"><svg><use href="#i-signal"/></svg>Traffic signals</button>
+      <a href="#traffic-panel"><svg><use href="#i-chart"/></svg>Analytics</a>
+      <button type="button" data-open="incident-dialog"><svg><use href="#i-alert"/></svg>Incidents</button>
+      <button type="button" id="compare-classroom"><svg><use href="#i-chart"/></svg>Experiments</button>
+      <button type="button" id="open-rl-benchmarks" aria-haspopup="dialog"><svg><use href="#i-chart"/></svg>Comparison</button>
+    </nav>
+    <main class="dispatch-main">
+      <section class="map-column" aria-labelledby="dashboard-title">
+        <div class="dispatch-title"><div><h1 id="dashboard-title">UrbanFlow AI — Multi-Agent Traffic Control</h1><p id="dashboard-network">Live simulation</p></div><button class="hud-btn" id="btn-inspect-fleet" disabled>Inspect vehicle</button></div>
+        <div id="map-panel" class="dispatch-card dispatch-map">
+          <div id="viewport-container" aria-label="Interactive traffic network"></div>
+          <div id="route-chase-controls" hidden style="position:absolute;z-index:5;bottom:12px;left:12px">
+            <span class="hud-btn" id="route-chase-time">Test car replay</span>
+            <button class="hud-btn" id="route-chase-exit" type="button">Route overview</button>
+          </div>
+          <div id="map-labels" aria-hidden="true"></div>
+          <div class="map-toolbar">
+            <form id="map-search" class="map-search" role="search"><svg><use href="#i-search"/></svg><input id="map-search-input" type="search" list="map-search-options" aria-label="Find a road or junction" placeholder="Find a road or junction" required><datalist id="map-search-options"></datalist></form>
+            <div class="map-modes"><button class="hud-btn" data-cam="tactical">Map</button><button class="hud-btn" data-cam="strategic">3D</button><button class="hud-btn" id="lighting-toggle" aria-pressed="true">Night</button></div>
+          </div>
+          <div class="map-tools"><button class="hud-btn" type="button" id="map-zoom-in" aria-label="Zoom in">+</button><button class="hud-btn" type="button" id="map-zoom-out" aria-label="Zoom out">&minus;</button><button class="hud-btn" type="button" id="map-fit" aria-label="Fit network"><svg><use href="#i-focus"/></svg></button><button class="hud-btn" id="map-fullscreen" type="button" aria-label="Fullscreen map">&#x26F6;</button></div>
+          <div class="density-legend"><button class="hud-btn" id="btn-toggle-heatmap" type="button" aria-pressed="false">Traffic overlay</button><ul><li><i class="low"></i>Low</li><li><i class="medium"></i>Moderate</li><li><i class="high"></i>High</li><li><i class="severe"></i>Severe</li></ul></div>
+          <div class="map-scale" id="map-scale" hidden></div>
+        </div>
+        <section id="playback-panel" class="dispatch-card dispatch-playback" aria-label="Simulation playback"><h2><svg><use href="#i-play"/></svg>Simulation playback</h2><div class="playback-inner">      <div class="playback-time">
+        <span>Simulated time</span>
+        <output id="sim-clock">00:00</output>
+        <span id="playback-state">Ready</span>
+      </div>
+      <div class="sim-playback-controls">
+        <button id="btn-play-pause" data-live class="hud-btn primary" data-paused="true">Start</button>
+        <button id="step-decision" class="hud-btn" disabled>Step decision</button>
+        <button id="btn-reset-sim" data-live class="hud-btn">Reset run</button>
+        <label class="speed-picker">Speed
+          <select id="playback-speed" class="hud-select" data-live>
+            <option value="1">1&times; Normal</option>
+            <option value="4">4&times; Fast</option>
+            <option value="10">10&times; Fast-forward</option>
+            <option value="20">20&times; Fast-forward</option>
+          </select>
+        </label>
+      </div>
+<progress id="departure-progress" max="1" value="0" aria-label="Scheduled departures due"></progress><span id="departure-summary"></span></div></section>
+        <div class="dispatch-workbench">
+          <section class="dispatch-card scenario-card"><p id="dashboard-scenario">Waiting for simulation</p><label class="control-field">
+            <span class="panel-section-title">Traffic demand</span>
+            <select id="scenario-select" class="hud-select" data-live>
+              <optgroup label="Synthetic scenarios">
+                <option value="normal">Normal</option>
+                <option value="rush_hour" selected>Rush hour</option>
+                <option value="surge">Peak demand</option>
+                <option value="city_shift">Commuter reversal</option>
+                <option value="incident">Downstream restriction</option>
+                <option value="event_release">Event release</option>
+              </optgroup>
+              <optgroup label="NYC DOT measured counts">
+                <option value="dot_morning">Morning commute</option>
+                <option value="dot_midday">Midday traffic</option>
+                <option value="dot_evening">Evening commute</option>
+              </optgroup>
+              <option value="uploaded" disabled>Uploaded demand</option>
+            </select>
+          </label><button type="button" class="hud-btn" data-open="settings-panel">Simulation settings</button></section>
+          <section id="route-panel" class="dispatch-card route-card"><div class="route-heading"><h2><svg><use href="#i-route"/></svg>Route planner</h2><button id="routing-demo" class="hud-btn" type="button" data-live>Run routing demo</button></div><form id="route-form"><label>From<select id="route-from" class="hud-select" required></select></label><button id="route-swap" type="button" class="hud-btn" aria-label="Swap origin and destination">&#8644;</button><label>To<select id="route-to" class="hud-select" required></select></label><button type="submit" class="hud-btn primary" data-live>Find route</button></form><button id="route-highlight-toggle" class="hud-btn" type="button" hidden aria-pressed="false">Show route on map</button><p id="route-result" aria-live="polite">Select two junctions to estimate a route.</p><p class="route-note">Uses simulated link speed, active signal phases, queue delay, and road restrictions. Cyan is the fastest route.</p></section>
+        </div>
+        <details id="route-test-panel" class="dispatch-card analytic-card">
+          <summary class="hud-btn panel-disclosure">Open Route Test Drive</summary>
+          <div class="route-test-body">
+          <div class="route-heading">
+            <h2>Route Test Drive</h2>
+            <button id="route-test-close" class="hud-btn" type="button">Close Route Test</button>
+          </div>
+          <p>Evaluate one vehicle's travel time under different signal controllers.</p>
+          <p id="route-test-endpoints">Choose a route in the Route planner.</p>
+          <a href="#route-panel">Change start or destination</a>
+          <button id="route-test-start" class="hud-btn primary" type="button" disabled>Drive and Compare</button>
+          <button id="route-chase-return" class="hud-btn" type="button" hidden>Follow test car</button>
+          <p id="route-test-status" role="status"></p>
+          <canvas id="route-test-map" width="720" height="175" role="img" aria-label="Planned route and test vehicle replay" hidden></canvas>
+          <div id="route-test-results"></div>
+          </div>
+        </details>
+      </section>
+      <aside id="traffic-panel" aria-label="Live traffic analytics" class="dispatch-analytics">
+        <section id="marl-agent-panel" class="dispatch-card marl-panel" hidden aria-labelledby="marl-controller-title">
+          <div id="marl-controller-title" class="panel-section-title">Traffic Signal Controller</div>
+          <button id="activate-marl" class="hud-btn marl-activate" disabled>🧠 Multi-Agent RL Model</button>
+          <p id="marl-version" class="control-explanation" hidden></p>
+          <p id="marl-availability" role="status">Checking model availability…</p>
+          <span id="marl-run-status" class="marl-run-badge" hidden></span>
+          <details id="marl-agent-details">
+          <summary class="hud-btn panel-disclosure">View Agent Status</summary>
+          <h2 id="marl-title">Agent Status</h2>
+          <div id="marl-agents" class="marl-agents"></div>
+          <details><summary>Recent policy decisions</summary>
+            <table><thead><tr><th>Time</th><th>Agent</th><th>Action</th><th>Result at request</th></tr></thead><tbody id="marl-history"></tbody></table>
+          </details>
+          <details><summary>Model Information</summary>
+            <p>Proximal Policy Optimization · Neighbor-aware parameter-sharing actor-critic · Four Classroom Grid agents</p>
+            <p>Observations include local traffic and selected neighboring intersections. Queue percentages show the busiest controlled inbound link on each axis relative to its storage. The stopped-vehicle counts add all controlled inbound links on that axis. Each agent chooses HOLD or SWITCH every five simulated seconds. Yellow and all-red clearance remain in force.</p>
+            <p>Inference device · CPU<br>Checkpoint · <code id="marl-checkpoint">Checking checkpoint…</code></p>
+            <p id="marl-model-details"></p>
+          </details>
+          </details>
+        </section>
+        <div class="live-kpis">
+          <article class="dispatch-card kpi"><svg><use href="#i-car"/></svg><div><h2>On network</h2><strong id="val-vehicles">0</strong><small><span id="val-moving">0</span> moving</small></div></article>
+          <article class="dispatch-card kpi"><svg><use href="#i-speed"/></svg><div><h2>Average speed</h2><strong><span id="val-speed">0.0</span> <em>km/h</em></strong><small><span id="val-delay">0.0</span> s avg. stopped</small></div></article>
+          <article class="dispatch-card kpi"><svg><use href="#i-chart"/></svg><div><h2>Congestion index</h2><strong id="live-congestion">0%</strong><small>Network speed indicator</small></div></article>
+          <article class="dispatch-card kpi"><svg><use href="#i-alert"/></svg><div><h2>Active incidents</h2><strong id="live-incidents">0</strong><small id="incident-brief">No active incidents</small></div></article>
+        </div>
+        <section class="dispatch-card analytic-card"><div class="analytic-heading"><h2>Vehicle count</h2><label class="sr-only" for="trend-window">Simulated history window</label><select class="hud-select" id="trend-window"><option value="60">1 min</option><option value="300" selected>5 min</option><option value="1800">30 min</option></select></div><canvas id="traffic-trend" role="img" aria-label="Active vehicles over simulated time"></canvas><div class="analytic-footer"><span><strong id="val-arrived">0</strong> completed</span><span><strong id="val-throughput">0</strong> veh/h</span></div></section>
+        <section class="dispatch-card analytic-card"><h2>Road load <abbr title="Simulated traffic volume divided by capacity">V/C</abbr></h2><div class="distribution"><div id="traffic-donut"><span><strong id="road-count">0</strong><small>directed roads</small></span></div><ul id="distribution-legend"><li><i class="low"></i>Low <strong id="density-0">&ndash;</strong></li><li><i class="medium"></i>Moderate <strong id="density-1">&ndash;</strong></li><li><i class="high"></i>High <strong id="density-2">&ndash;</strong></li><li><i class="severe"></i>Severe <strong id="density-3">&ndash;</strong></li></ul></div></section>
+        <section class="dispatch-card analytic-card"><h2>Average speed by corridor</h2><ul id="corridor-speeds"><li>Waiting for moving traffic</li></ul></section>
+        <p id="traffic-hold" class="control-explanation" role="status" hidden></p>
+        <p id="study-preview-copy" class="control-explanation"></p>
+      </aside>
+    </main>
+  </div>
+  <div id="control-feedback" role="status" hidden></div>
+  <dialog id="settings-panel" class="dispatch-dialog" aria-labelledby="settings-title"><header class="study-header"><h2 id="settings-title">Simulation settings</h2><form method="dialog"><button class="hud-btn">Close</button></form></header><section class="study-body dispatch-settings"><div>
+
+          <label class="control-field">
+            <span class="panel-section-title">Traffic volume</span>
+            <select id="traffic-factor" class="hud-select" data-live>
+              <option value="1">1× Original</option>
+              <option value="1.5">1.5× Heavy</option>
+              <option value="2">2× Very heavy</option>
+              <option value="3">3× Extreme</option>
+              <option value="4">4× Stress test</option>
+            </select>
+          </label>
+          <label class="hud-btn demand-upload"><span>Upload demand file</span><small>CSV / JSON</small>
+            <input id="demand-upload" type="file" accept=".csv,.json" data-live>
+          </label>
+          <p id="demand-error" role="alert" hidden></p>
+          <p id="demand-status" role="status">Synthetic rush hour | ready</p>
+          <a id="demand-export" class="study-download" href="/api/demand/export.csv">Download re-uploadable schedule</a>
+          <a id="count-download" class="study-download" href="/api/observed-counts.csv" hidden>Download measured counts</a>
+        </div>
+
+        <!-- Controller choices for other networks -->
+        <div id="network-controllers" hidden>
+          <div class="panel-section-title">Traffic Signal Controller</div>
+          <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+            <button class="hud-btn active" data-live data-controller="FIXED_TIME" title="Deterministic fixed-time cyclic splits and coordinated offsets">⏱️ Fixed-Time</button>
+            <button class="hud-btn" data-live data-controller="ACTUATED" title="Demand-responsive gap-out & queue clearance (Adaptive)">🚗 Adaptive</button>
+            <button class="hud-btn" data-live data-controller="MAX_PRESSURE" title="Queue-differential pressure with storage safeguards">⚖️ MaxPressure</button>
+            <button class="hud-btn" data-live data-controller="COOPERATIVE_PREDICTIVE" title="Predictive multi-agent green waves with downstream vetoes">🤖 Predictive</button>
+            <button class="hud-btn" data-controller="PPO_LOCAL" disabled>PPO · Local</button>
+            <button class="hud-btn" data-controller="PPO_NEIGHBOR" disabled>PPO · Neighbor</button>
+          </div>
+          <p id="controller-explanation" class="control-explanation">Uses a repeating timetable for each signal.</p>
+          <div id="controller-status-pill" class="status-pill-box">
+            <span style="color: var(--text-muted);"><strong id="ctrl-active-name" style="color: var(--accent-cyan);">Fixed-Time</strong></span>
+            <span id="ctrl-model-tag" style="color: #10b981; font-weight: 600;">ACTIVE</span>
+          </div>
+        </div>
+
+        <details class="advanced-controls">
+          <summary>Routing and overlays</summary>
+          <div class="btn-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <button class="hud-btn active" data-live data-routing="OFF" title="Baseline shortest-path routes remain unchanged">🛑 Off</button>
+            <button class="hud-btn" data-live data-routing="REACTIVE" title="Demand-responsive V/C capacity routing">🔄 Reactive</button>
+            <button class="hud-btn" data-live data-routing="PREDICTIVE" title="Machine learning spillback prediction & reservations">🧠 Predictive</button>
+          </div>
+          <div id="routing-status-pill" class="status-pill-box">
+            <span style="color: var(--text-muted);">ROUTING: <strong id="routing-active-name" style="color: var(--accent-cyan);">Off</strong></span>
+            <span id="routing-model-tag" style="color: #64748b; font-weight: 600;">Off</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--text-muted); padding: 2px 4px 0 4px;">
+            <span>Rerouted: <strong id="val-reroute-count" style="color: #10b981;">0</strong> (<span id="val-reroute-rejected">0</span> rej)</span>
+            <span>Reservations: <strong id="val-reservations-count" style="color: #38bdf8;">0</strong></span>
+          </div>
+          <p id="routing-explanation" class="control-explanation">Keeps each vehicle on its original route.</p>
+          <button id="compare-routing" class="hud-btn" aria-haspopup="dialog">Compare routing modes</button>
+          
+        </details>
+
+        <!-- 5. Camera Perspectives -->
+        <div>
+          <div class="panel-section-title">Camera Perspectives</div>
+          <div class="btn-grid" style="grid-template-columns: 1fr 1fr;">
+            <button class="hud-btn active" data-cam="strategic" title="Angled 3D strategic overview of all 4 intersections">🌐 3D Overview</button>
+            <button class="hud-btn" data-cam="tactical" title="View the network from above">🎯 Top-Down 2D</button>
+            <button class="hud-btn" data-cam="chase" disabled title="Follow selected vehicle through the network">🏎️ Follow Vehicle</button>
+          </div>
+        </div></section></dialog>
+  <dialog id="signals-dialog" class="dispatch-dialog" aria-labelledby="signals-title"><header class="study-header"><h2 id="signals-title">Traffic signals</h2><form method="dialog"><button class="hud-btn">Close</button></form></header><section class="study-body"><p><strong id="signal-phase-name">Waiting for telemetry</strong> <span id="signal-phase-timer"></span></p>        <details class="advanced-controls junction-list" open>
+          <summary>Focus a junction</summary>
+          <div id="junction-picker" hidden>
+            <select id="junction-select" class="hud-select" aria-label="Junction to focus"></select>
+            <p id="junction-phase" class="control-explanation"></p>
+          </div>
+          <div id="bottleneck-list"></div>
+          <p id="junction-decision" aria-live="off"></p>
+          <pre id="junction-observations"></pre>
+        </details>
+</section></dialog>
+  <dialog id="incident-dialog" class="dispatch-dialog" aria-labelledby="incidents-title"><header class="study-header"><h2 id="incidents-title">Traffic incidents</h2><form method="dialog"><button class="hud-btn">Close</button></form></header><section class="study-body"><ul id="incident-list"><li>No active incidents</li></ul><form id="incident-form"><label>Road<select id="incident-road" class="hud-select" required></select></label><button type="submit" class="hud-btn" data-live>Simulate a 90 s incident</button></form></section></dialog>
+
+  <!-- Vehicle Inspector Popover -->
+  <div id="vehicle-inspector" class="hud-panel">
+    <div class="inspector-header">
+      <span class="inspector-title">Vehicle Inspector</span>
+      <button type="button" id="close-inspector" class="inspector-close" aria-label="Close vehicle inspector">Close</button>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Agent ID:</span>
+      <span id="insp-id" class="val">-</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Vehicle Class:</span>
+      <span id="insp-type" class="val">-</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Current Velocity:</span>
+      <span id="insp-speed" class="val">-</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Assigned Road:</span>
+      <span id="insp-road" class="val">-</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Route Progress:</span>
+      <span id="insp-route-progress" class="val">-</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Reroute Count:</span>
+      <span id="insp-reroute-count" class="val">0</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Route Guidance:</span>
+      <span id="insp-route-guidance" class="val">Original</span>
+    </div>
+    <div class="inspector-row">
+      <span class="label">Accumulated Delay:</span>
+      <span id="insp-wait" class="val">-</span>
+    </div>
+  </div>
+
+  <dialog id="controller-study" aria-labelledby="study-title">
+    <header class="study-header">
+      <div><span class="study-context">Signal strategy</span><h2 id="study-title">Controller comparison</h2></div>
+      <form method="dialog"><button class="hud-btn">Close</button></form>
+    </header>
+    <section class="study-body">
+      <div class="study-toolbar">
+        <div><h3 id="study-demand">Current demand</h3><p id="study-conditions">Identical departures, empty network, routing off.</p></div>
+        <button id="study-run" class="hud-btn primary">Run comparison</button>
+      </div>
+      <p id="study-status" role="status">Run a replay to see how each controller handles this demand.</p>
+      <progress id="study-progress" max="1" value="0" aria-label="Comparison progress" hidden></progress>
+      <div id="comparison-results"></div>
+      <details id="held-out-results">
+        <summary>Held-out results · five matched seeds</summary>
+        <div id="held-out-table">Open to load results.</div>
+        <p><a href="/api/experiments/held-out?format=csv">Download held-out evaluation CSV</a></p>
+      </details>
+    </section>
+  </dialog>
+
+  <dialog id="rl-benchmarks" class="benchmark-dialog" aria-labelledby="rl-title">
+    <header class="study-header">
+      <div><h2 id="rl-title">Selected Controller Comparison</h2><p>Archived SUMO results</p></div>
+      <form method="dialog"><button class="hud-btn">Close</button></form>
+    </header>
+    <div class="study-body">
+      <p class="study-ranking">SUMO benchmarks ranked by mean time loss plus departure delay. Lower is better. Live controller comparisons use UrbanFlow's own controllers.</p>
+      <label class="control-field">Demand scenario<select id="rl-scenario" class="hud-select"></select></label>
+      <p class="study-ranking">Selected comparison view. Complete benchmark results are retained separately.</p>
+      <div id="rl-results"></div>
+      <details id="rl-research"><summary>Research Results · Complete benchmark</summary><div id="rl-results-full"></div></details>
+    </div>
+  </dialog>
+
+  <!-- Main ES Module Bootstrap -->
+  <script type="module" src="/static/js/app.js?v=route-close-1"></script>
+</body>
+</html>

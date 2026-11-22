@@ -1,0 +1,4 @@
+{"episode": 1, "completed": [67, 63, 57, 65], "training_switches": 38, "validation_total": 252}
+{"episode": 2, "completed": [67, 66, 57, 65], "training_switches": 35, "validation_total": 255}
+{"episode": 3, "completed": [67, 66, 57, 65], "training_switches": 27, "validation_total": 255}
+{"episode": 4, "completed": [67, 66, 57, 65], "training_switches": 32, "validation_total": 255}

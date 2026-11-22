@@ -1,0 +1,322 @@
+{
+  "metadata": {
+    "timestamp": "2026-11-13 23:25:41"
+  },
+  "horizons": {
+    "5min": {
+      "validation_selection": {
+        "val_brier_score": 0.0036,
+        "val_pr_auc": 0.0534,
+        "val_roc_auc": 0.9321,
+        "selected_threshold": 0.1,
+        "val_best_f1": 0.0515,
+        "val_precision_at_threshold": 0.0845,
+        "val_recall_at_threshold": 0.037
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "5min",
+        "horizon_sec": 300,
+        "threshold_used": 0.1,
+        "sample_level_metrics": {
+          "total_samples": 908880,
+          "positive_prevalence_pct": 0.414,
+          "confusion_matrix": [
+            [
+              903675,
+              1440
+            ],
+            [
+              3593,
+              172
+            ]
+          ],
+          "accuracy": 0.9945,
+          "precision": 0.1067,
+          "recall": 0.0457,
+          "f1_score": 0.064,
+          "pr_auc": 0.0608,
+          "roc_auc": 0.9328,
+          "brier_score": 0.004
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 94,
+          "total_alarms": 79,
+          "matched_alarms_tp": 21,
+          "unmatched_alarms_fp": 58,
+          "missed_events_fn": 73,
+          "operational_precision": 0.2658,
+          "operational_recall": 0.2234,
+          "exposure_hours": 1219.0,
+          "false_alarm_rate_per_hour": 0.0476,
+          "lead_time_distribution": {
+            "count": 21,
+            "mean": 169.29,
+            "median": 190.0,
+            "std": 99.31,
+            "min": 5.0,
+            "max": 285.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "5min",
+        "horizon_sec": 300,
+        "threshold_used": 0.1,
+        "sample_level_metrics": {
+          "total_samples": 2272200,
+          "positive_prevalence_pct": 0.382,
+          "confusion_matrix": [
+            [
+              2260087,
+              3429
+            ],
+            [
+              8400,
+              284
+            ]
+          ],
+          "accuracy": 0.9948,
+          "precision": 0.0765,
+          "recall": 0.0327,
+          "f1_score": 0.0458,
+          "pr_auc": 0.0511,
+          "roc_auc": 0.9291,
+          "brier_score": 0.0037
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 226,
+          "total_alarms": 223,
+          "matched_alarms_tp": 53,
+          "unmatched_alarms_fp": 170,
+          "missed_events_fn": 173,
+          "operational_precision": 0.2377,
+          "operational_recall": 0.2345,
+          "exposure_hours": 3046.01,
+          "false_alarm_rate_per_hour": 0.0558,
+          "lead_time_distribution": {
+            "count": 53,
+            "mean": 198.96,
+            "median": 240.0,
+            "std": 93.82,
+            "min": 5.0,
+            "max": 295.0
+          }
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_classifiers\\lgb_spillback_classifier_5min.joblib",
+      "model_sha256": "E668DA9522AAEABE5C2AC6134EA15FD911AD2F81C461A51D8CAFE2EBA70A6794"
+    },
+    "10min": {
+      "validation_selection": {
+        "val_brier_score": 0.0058,
+        "val_pr_auc": 0.1093,
+        "val_roc_auc": 0.943,
+        "selected_threshold": 0.15,
+        "val_best_f1": 0.1257,
+        "val_precision_at_threshold": 0.2006,
+        "val_recall_at_threshold": 0.0915
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "10min",
+        "horizon_sec": 600,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 808080,
+          "positive_prevalence_pct": 0.776,
+          "confusion_matrix": [
+            [
+              799978,
+              1830
+            ],
+            [
+              5626,
+              646
+            ]
+          ],
+          "accuracy": 0.9908,
+          "precision": 0.2609,
+          "recall": 0.103,
+          "f1_score": 0.1477,
+          "pr_auc": 0.1346,
+          "roc_auc": 0.9375,
+          "brier_score": 0.0071
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 90,
+          "total_alarms": 102,
+          "matched_alarms_tp": 21,
+          "unmatched_alarms_fp": 81,
+          "missed_events_fn": 69,
+          "operational_precision": 0.2059,
+          "operational_recall": 0.2333,
+          "exposure_hours": 1084.7,
+          "false_alarm_rate_per_hour": 0.0747,
+          "lead_time_distribution": {
+            "count": 21,
+            "mean": 369.29,
+            "median": 430.0,
+            "std": 221.09,
+            "min": 5.0,
+            "max": 595.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "10min",
+        "horizon_sec": 600,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 2020200,
+          "positive_prevalence_pct": 0.69,
+          "confusion_matrix": [
+            [
+              2001630,
+              4638
+            ],
+            [
+              12870,
+              1062
+            ]
+          ],
+          "accuracy": 0.9913,
+          "precision": 0.1863,
+          "recall": 0.0762,
+          "f1_score": 0.1082,
+          "pr_auc": 0.1052,
+          "roc_auc": 0.9376,
+          "brier_score": 0.0064
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 222,
+          "total_alarms": 244,
+          "matched_alarms_tp": 46,
+          "unmatched_alarms_fp": 198,
+          "missed_events_fn": 176,
+          "operational_precision": 0.1885,
+          "operational_recall": 0.2072,
+          "exposure_hours": 2709.93,
+          "false_alarm_rate_per_hour": 0.0731,
+          "lead_time_distribution": {
+            "count": 46,
+            "mean": 352.83,
+            "median": 375.0,
+            "std": 210.97,
+            "min": 5.0,
+            "max": 600.0
+          }
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_classifiers\\lgb_spillback_classifier_10min.joblib",
+      "model_sha256": "BD257B88852A53E36B1DEF1DEA52E39F350E854CF845E13409408E2473493770"
+    },
+    "15min": {
+      "validation_selection": {
+        "val_brier_score": 0.0077,
+        "val_pr_auc": 0.1538,
+        "val_roc_auc": 0.9464,
+        "selected_threshold": 0.15,
+        "val_best_f1": 0.1941,
+        "val_precision_at_threshold": 0.208,
+        "val_recall_at_threshold": 0.1819
+      },
+      "in_distribution_test": {
+        "split": "IN_DIST_TEST",
+        "horizon": "15min",
+        "horizon_sec": 900,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 707280,
+          "positive_prevalence_pct": 1.102,
+          "confusion_matrix": [
+            [
+              695377,
+              4106
+            ],
+            [
+              6428,
+              1369
+            ]
+          ],
+          "accuracy": 0.9851,
+          "precision": 0.25,
+          "recall": 0.1756,
+          "f1_score": 0.2063,
+          "pr_auc": 0.173,
+          "roc_auc": 0.9368,
+          "brier_score": 0.0098
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 82,
+          "total_alarms": 178,
+          "matched_alarms_tp": 27,
+          "unmatched_alarms_fp": 151,
+          "missed_events_fn": 55,
+          "operational_precision": 0.1517,
+          "operational_recall": 0.3293,
+          "exposure_hours": 949.96,
+          "false_alarm_rate_per_hour": 0.159,
+          "lead_time_distribution": {
+            "count": 27,
+            "mean": 395.19,
+            "median": 315.0,
+            "std": 328.03,
+            "min": 5.0,
+            "max": 900.0
+          }
+        }
+      },
+      "held_out_test": {
+        "split": "HELD_OUT_TEST",
+        "horizon": "15min",
+        "horizon_sec": 900,
+        "threshold_used": 0.15,
+        "sample_level_metrics": {
+          "total_samples": 1768200,
+          "positive_prevalence_pct": 0.986,
+          "confusion_matrix": [
+            [
+              1740539,
+              10223
+            ],
+            [
+              14743,
+              2695
+            ]
+          ],
+          "accuracy": 0.9859,
+          "precision": 0.2086,
+          "recall": 0.1545,
+          "f1_score": 0.1776,
+          "pr_auc": 0.1494,
+          "roc_auc": 0.9415,
+          "brier_score": 0.0089
+        },
+        "event_level_alarm_metrics": {
+          "total_physical_events": 212,
+          "total_alarms": 489,
+          "matched_alarms_tp": 72,
+          "unmatched_alarms_fp": 417,
+          "missed_events_fn": 140,
+          "operational_precision": 0.1472,
+          "operational_recall": 0.3396,
+          "exposure_hours": 2374.03,
+          "false_alarm_rate_per_hour": 0.1757,
+          "lead_time_distribution": {
+            "count": 72,
+            "mean": 504.72,
+            "median": 467.5,
+            "std": 325.95,
+            "min": 10.0,
+            "max": 900.0
+          }
+        }
+      },
+      "classifier_model_path": "D:\\TRAFFIC\\urbanflow\\data\\models\\campaign_classifiers\\lgb_spillback_classifier_15min.joblib",
+      "model_sha256": "44ED50C7AB9CB3824B6A31FF4B086548C3C7A0B32BFCBFA9CE9A1C1319ACE283"
+    }
+  }
+}

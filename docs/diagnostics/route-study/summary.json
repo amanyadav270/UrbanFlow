@@ -1,0 +1,294 @@
+{
+  "west_east": {
+    "0": {
+      "Multi-Agent RL Model \u00b7 Directional v2": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 57.01,
+        "sample_sd": 6.85,
+        "mean_intersection_wait": 14.79,
+        "mean_wait_by_junction": {
+          "INT_NE": 7.39,
+          "INT_NW": 7.4
+        },
+        "mean_network_completions_180s": 55.6,
+        "mean_network_stopped_vehicle_seconds_180s": 5942.71
+      },
+      "Fixed-Time": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 54.64,
+        "sample_sd": 2.79,
+        "mean_intersection_wait": 18.16,
+        "mean_wait_by_junction": {
+          "INT_NE": 0,
+          "INT_NW": 18.16
+        },
+        "mean_network_completions_180s": 51,
+        "mean_network_stopped_vehicle_seconds_180s": 7001.02
+      },
+      "Actuated": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 41.83,
+        "sample_sd": 4.04,
+        "mean_intersection_wait": 4.72,
+        "mean_wait_by_junction": {
+          "INT_NE": 0.59,
+          "INT_NW": 4.13
+        },
+        "mean_network_completions_180s": 65.8,
+        "mean_network_stopped_vehicle_seconds_180s": 5824.07
+      },
+      "MaxPressure": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 37.59,
+        "sample_sd": 0.44,
+        "mean_intersection_wait": 2.3,
+        "mean_wait_by_junction": {
+          "INT_NE": 0,
+          "INT_NW": 2.3
+        },
+        "mean_network_completions_180s": 55.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6070.58
+      },
+      "Cooperative Predictive": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 37.59,
+        "sample_sd": 0.44,
+        "mean_intersection_wait": 2.3,
+        "mean_wait_by_junction": {
+          "INT_NE": 0,
+          "INT_NW": 2.3
+        },
+        "mean_network_completions_180s": 55.4,
+        "mean_network_stopped_vehicle_seconds_180s": 6104.0
+      }
+    },
+    "35": {
+      "Multi-Agent RL Model \u00b7 Directional v2": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 78.2,
+        "sample_sd": 8.31,
+        "mean_intersection_wait": 30.73,
+        "mean_wait_by_junction": {
+          "INT_NE": 7.56,
+          "INT_NW": 23.17
+        },
+        "mean_network_completions_180s": 58.2,
+        "mean_network_stopped_vehicle_seconds_180s": 5763.75
+      },
+      "Fixed-Time": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 120.86,
+        "sample_sd": 6.46,
+        "mean_intersection_wait": 72.39,
+        "mean_wait_by_junction": {
+          "INT_NE": 23.6,
+          "INT_NW": 48.79
+        },
+        "mean_network_completions_180s": 51.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6814.28
+      },
+      "Actuated": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 78.67,
+        "sample_sd": 37.67,
+        "mean_intersection_wait": 33.55,
+        "mean_wait_by_junction": {
+          "INT_NE": 21.4,
+          "INT_NW": 12.15
+        },
+        "mean_network_completions_180s": 68,
+        "mean_network_stopped_vehicle_seconds_180s": 5705.24
+      },
+      "MaxPressure": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 78.98,
+        "sample_sd": 11.09,
+        "mean_intersection_wait": 33.79,
+        "mean_wait_by_junction": {
+          "INT_NE": 10.03,
+          "INT_NW": 23.76
+        },
+        "mean_network_completions_180s": 55.4,
+        "mean_network_stopped_vehicle_seconds_180s": 5975.38
+      },
+      "Cooperative Predictive": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 79.65,
+        "sample_sd": 11.57,
+        "mean_intersection_wait": 34.21,
+        "mean_wait_by_junction": {
+          "INT_NE": 10.45,
+          "INT_NW": 23.76
+        },
+        "mean_network_completions_180s": 55.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6046.74
+      }
+    }
+  },
+  "north_south": {
+    "0": {
+      "Multi-Agent RL Model \u00b7 Directional v2": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 35.25,
+        "sample_sd": 10.95,
+        "mean_intersection_wait": 5.17,
+        "mean_wait_by_junction": {
+          "INT_NW": 0,
+          "INT_SW": 5.17
+        },
+        "mean_network_completions_180s": 54,
+        "mean_network_stopped_vehicle_seconds_180s": 6036.7
+      },
+      "Fixed-Time": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 30.01,
+        "sample_sd": 3.99,
+        "mean_intersection_wait": 0.67,
+        "mean_wait_by_junction": {
+          "INT_NW": 0,
+          "INT_SW": 0.67
+        },
+        "mean_network_completions_180s": 52.6,
+        "mean_network_stopped_vehicle_seconds_180s": 6926.48
+      },
+      "Actuated": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 54.77,
+        "sample_sd": 33.9,
+        "mean_intersection_wait": 23.39,
+        "mean_wait_by_junction": {
+          "INT_NW": 0,
+          "INT_SW": 23.39
+        },
+        "mean_network_completions_180s": 66.2,
+        "mean_network_stopped_vehicle_seconds_180s": 5779.3
+      },
+      "MaxPressure": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 55.44,
+        "sample_sd": 29.07,
+        "mean_intersection_wait": 23.6,
+        "mean_wait_by_junction": {
+          "INT_NW": 0,
+          "INT_SW": 23.6
+        },
+        "mean_network_completions_180s": 55.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6076.33
+      },
+      "Cooperative Predictive": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 55.52,
+        "sample_sd": 29.2,
+        "mean_intersection_wait": 23.75,
+        "mean_wait_by_junction": {
+          "INT_NW": 0,
+          "INT_SW": 23.75
+        },
+        "mean_network_completions_180s": 54.6,
+        "mean_network_stopped_vehicle_seconds_180s": 6169.92
+      }
+    },
+    "35": {
+      "Multi-Agent RL Model \u00b7 Directional v2": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 111.56,
+        "sample_sd": 45.16,
+        "mean_intersection_wait": 65.0,
+        "mean_wait_by_junction": {
+          "INT_NW": 18.6,
+          "INT_SW": 46.4
+        },
+        "mean_network_completions_180s": 56,
+        "mean_network_stopped_vehicle_seconds_180s": 5873.74
+      },
+      "Fixed-Time": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 56.5,
+        "sample_sd": 17.46,
+        "mean_intersection_wait": 16.05,
+        "mean_wait_by_junction": {
+          "INT_NW": 8.87,
+          "INT_SW": 7.18
+        },
+        "mean_network_completions_180s": 52.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6860.85
+      },
+      "Actuated": {
+        "completed": 5,
+        "runs": 5,
+        "completion_percent": 100.0,
+        "mean_trip": 108.51,
+        "sample_sd": 13.8,
+        "mean_intersection_wait": 52.9,
+        "mean_wait_by_junction": {
+          "INT_NW": 44.2,
+          "INT_SW": 8.7
+        },
+        "mean_network_completions_180s": 66.6,
+        "mean_network_stopped_vehicle_seconds_180s": 5709.47
+      },
+      "MaxPressure": {
+        "completed": 4,
+        "runs": 5,
+        "completion_percent": 80.0,
+        "mean_trip": 216.61,
+        "sample_sd": 64.04,
+        "mean_intersection_wait": 179.08,
+        "mean_wait_by_junction": {
+          "INT_NW": 69.48,
+          "INT_SW": 109.6
+        },
+        "mean_network_completions_180s": 55.8,
+        "mean_network_stopped_vehicle_seconds_180s": 5991.38
+      },
+      "Cooperative Predictive": {
+        "completed": 4,
+        "runs": 5,
+        "completion_percent": 80.0,
+        "mean_trip": 223.76,
+        "sample_sd": 64.39,
+        "mean_intersection_wait": 181.07,
+        "mean_wait_by_junction": {
+          "INT_NW": 51.48,
+          "INT_SW": 129.59
+        },
+        "mean_network_completions_180s": 55.8,
+        "mean_network_stopped_vehicle_seconds_180s": 6039.14
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: Cite this project when referencing the UrbanFlow AI software or its evaluation results.
+title: UrbanFlow AI — Multi-Agent Reinforcement Learning for Traffic Signal Control Optimization
+type: software
+authors:
+  - family-names: Yadav
+    given-names: Aman
